@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { analyzeSentence } from '../services/api';
-import type { AnalysisResult } from '../types/types';
+import { AnalysisResult } from '../types/types';
 
 export const useFallacyAnalysis = () => {
   const [result, setResult] = useState<AnalysisResult | null>(null);

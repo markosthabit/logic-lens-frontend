@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
-import { FaPaperPlane } from 'react-icons/fa';
+import { FaPaperPlane, FaRandom } from 'react-icons/fa';
 import { useFallacyAnalysis } from '../hooks/useFallacyAnalysis';
 import ResultCard from './ResultCard';
 import FallacyExamples from './FallacyExamples';
+import { AnalysisResult } from '../types/types';
+
+// Add example sentences for quick testing
+const EXAMPLE_SENTENCES = [
+  "If you don't support this policy, you must hate our country",
+  "You can't trust his opinion because he's not even educated",
+  "We should ban all social media because it leads to school shootings",
+  "Everyone is using this product, so it must be good",
+  "That politician cried during the debate, so his policies must be wrong"
+];
 
 const InputCard: React.FC = () => {
   const [sentence, setSentence] = useState('');
@@ -17,6 +27,11 @@ const InputCard: React.FC = () => {
     setSentence('');
     resetAnalysis();
   };
+  
+  const loadExample = () => {
+    const randomExample = EXAMPLE_SENTENCES[Math.floor(Math.random() * EXAMPLE_SENTENCES.length)];
+    setSentence(randomExample);
+  };
 
   return (
     <div className="card bg-base-100 border border-base-300 shadow-xl">
@@ -25,11 +40,17 @@ const InputCard: React.FC = () => {
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="form-control">
-            <label htmlFor="sentence" className="label">
+            <div className="label">
               <span className="label-text">Enter a statement to analyze</span>
-            </label>
+              <button 
+                type="button" 
+                className="btn btn-xs btn-ghost"
+                onClick={loadExample}
+              >
+                <FaRandom className="mr-1" /> Load Example
+              </button>
+            </div>
             <textarea
-              id="sentence"
               className="textarea textarea-bordered h-32 text-base"
               placeholder="Example: If you don't support this policy, you must hate our country"
               value={sentence}

@@ -86,6 +86,7 @@ Restart the development server
 
 ### UI/UX Improvements
 
+- Color-Code flagged parts of the text, with the same colors of the fallacies. 
 - Enhance component spacing and visual hierarchy
 - Implement dark/light theme toggle
 - Add animations for state transitions

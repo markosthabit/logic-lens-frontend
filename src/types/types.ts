@@ -1,9 +1,8 @@
 export interface AnalysisResult {
-  fallacy: string;
-  explanation: string;
-}
-
-export interface FallacyExample {
-  sentence: string;
-  fallacy: string;
+  original: string;
+  fallacies: string[];
+  explanations: string[];
+  reframed: string[];
+  counterarguments: string[];
+  flaggedParts?: string[]; // Optional, from detection
 }
